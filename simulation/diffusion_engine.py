@@ -217,7 +217,7 @@ class DiffusionEngine:
         # grouping product specs by data type
         self.vanillas_on_fx_f32 = np.empty((self.vanilla_specs.size, 3), np.float32)  # mat, notional, stk
         self.vanillas_on_fx_i32 = np.empty((self.vanilla_specs.size, 2), np.int32)  # cpty, fgn_ccy
-        self.vanillas_on_fx_b8 = np.empty((self.vanilla_specs.size, 1), np.bool8)  # call_put
+        self.vanillas_on_fx_b8 = np.empty((self.vanilla_specs.size, 1), np.bool_)  # call_put
         # first_reset, reset_freq, notional, swap_rate
         self.irs_f32 = np.empty((self.irs_specs.size, 4), np.float32)
         # num_resets, cpty, ccy
@@ -248,7 +248,7 @@ class DiffusionEngine:
             self.d_nested_im_v = cuda.device_array((self.num_spreads-1, self.num_paths), np.float32)
         self.d_vanillas_on_fx_f32 = cuda.device_array((self.vanilla_specs.size, 3), np.float32)
         self.d_vanillas_on_fx_i32 = cuda.device_array((self.vanilla_specs.size, 2), np.int32)
-        self.d_vanillas_on_fx_b8 = cuda.device_array((self.vanilla_specs.size, 1), np.bool8)
+        self.d_vanillas_on_fx_b8 = cuda.device_array((self.vanilla_specs.size, 1), np.bool_)
         self.d_irs_f32 = cuda.device_array((self.irs_specs.size, 4), np.float32)
         self.d_irs_i32 = cuda.device_array((self.irs_specs.size, 3), np.int32)
         self.d_zcs_f32 = cuda.device_array(
